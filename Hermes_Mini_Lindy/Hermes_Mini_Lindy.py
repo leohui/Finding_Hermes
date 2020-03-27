@@ -1,21 +1,16 @@
 from bs4 import BeautifulSoup
 import requests
-#import boto3
 import email_setup
 import aws_sns_texting as txt
 import datetime as dt
 import mylogin as ml
 
-
 today_date = dt.datetime.now()
 day_of_week = today_date.isoweekday()
 current_datetime = dt.datetime.now().strftime("%Y-%m-%d %H:%M")
 
-
-
-
 #Send an email out to remind me of the program still running.
-if current_datetime[11:13] == '12':
+if 8 <= int(current_datetime[11:13]) <= 12:
 
     # Content for the email
     subject = 'Message From Mini Lindy Python - '
