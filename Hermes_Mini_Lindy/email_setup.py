@@ -7,6 +7,7 @@ my_email_addr = ml.get_email()
 my_password = ml.get_authpw()
 
 def status_email(to_email_addr, subject, body, current_datetime):
+    ##print(to_email_addr, subject, body, current_datetime)
     ## Build an Email Message
     msg = EmailMessage()
     msg['From'] = my_email_addr

@@ -16,12 +16,14 @@ if 8 <= int(current_datetime[11:13]) <= 12:
     subject = 'Message From Mini Lindy Python - '
     body = 'Hi, \nThis is Mini Lindy. \nI am still checking for you. Stay tuned!'
     to_email_addr = ml.get_email()
+    print(current_datetime)
+    print( '8 - 12 Email')
     ## Send an Email Notification of Execution
     email_setup.status_email(to_email_addr, subject, body, current_datetime)
 
-else:
+else:    
+    print(current_datetime)
     print('continue')
-
 
 ### Example of a search URL that brings back result (testing purpose)
 #url = 'https://www.hermes.com/us/en/search/?s=jige%20elan#||'
@@ -68,11 +70,12 @@ except: ##Found Item Page in Hermes
         
         email_message += f'Name: {name} \nColor: {color} \nPrice: {price} \n\n'
 
-    # Send out an email with all the items found.
+    # Setup email with all the items found.
     subject = 'Hurry!!!! Mini Lindy Available - '
     body = f'Hurry Up!... I found these:\n {url} \n\n{email_message}'
     to_leo_email_addr = ml.get_email()
     to_peg_email_addr = ml.get_peg_email()
+    
     ## Send an Email Notification of Execution
     email_setup.status_email(to_leo_email_addr,subject, body, current_datetime)
     email_setup.status_email(to_peg_email_addr,subject, body, current_datetime)

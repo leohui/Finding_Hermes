@@ -25,9 +25,45 @@ Pip3 the following module:
  4) In CMD or Terminal type: aws configure (if error, close cmd and reopen cmd to try again)
  5) enter Access key ID, Secret access key, Region Name = us-east-1, Output format = json
 
-Setup User Evironment Variables
+Setup User Evironment Variables:
 -- 'GMAIL'
 -- 'PEG_GMAIL'
 -- 'GMAIL_SMTP_AUTH_PW'
 -- 'MY_PHONE_NUM'
 -- 'PEG_PHONE_NUM'
+
+On windows, go to search for "View Advanced Systems Setting" >> Click on the "Environment Variable" button to setup the variables.
+
+On linux, create script to export user variables. 
+1) Go to pi@raspi0:/etc/profile.d
+2) Create the file with the following as my_env_var.sh:
+
+        export GMAIL="[Your Email]"
+        export PEG_GMAIL="[Peg Email"
+        export GMAIL_SMTP_AUTH_PW="[GMAIL AUTH Access Key]"
+        export MY_PHONE_NUM="[+1[Phone Numbber]]"
+        export PEG_PHONE_NUM="[+1[Phone Numbber]]"
+        
+
+Scheduling the Tasks
+On Windows,
+    Search for "Task Scheduler".
+    1) Create Task ...
+    2) Go to Action Tab Enter: 
+        Program/Script (Python Location) : C:\Users\leohu\AppData\Local\Programs\Python\Python37-32\python.exe
+        Add Argument (Script Name): Hermes_Mini_Lindy.py
+        Start In (Script Location): C:\Users\leohu\Desktop\Python\GitHub\Python_Project\Project_2_Hermes_Mini_Lindy
+    3) Create the desired time for triggering from the "Tiggers" Tab
+
+
+On Linux,
+    1)Setup Cron Job, type crontab -e, use nano
+    2)Enter the following:
+    
+      # m h  dom mon dow   command
+      0 8-14/2 * * * . $HOME/.profile; /usr/bin/python3 /home/pi/Documents/Finding_Hermes/Hermes_Mini_Lindy/Hermes_Mini_Lindy.py >> ~/cr$
+      */15 14-22 * * * . $HOME/.profile;  /usr/bin/python3 /home/pi/Documents/Finding_Hermes/Hermes_Mini_Lindy/Hermes_Mini_Lindy.py >> ~$
+    3) Save the crontab 
+
+
+  
