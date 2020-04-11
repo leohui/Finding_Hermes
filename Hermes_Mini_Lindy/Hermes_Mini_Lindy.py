@@ -1,3 +1,6 @@
+### Last Updated
+### 4/11/2020 on Pi Zero - reduce number of emails in the morning.
+
 from bs4 import BeautifulSoup
 import requests
 import email_setup
@@ -10,7 +13,7 @@ day_of_week = today_date.isoweekday()
 current_datetime = dt.datetime.now().strftime("%Y-%m-%d %H:%M")
 
 #Send an email out to remind me of the program still running.
-if 8 <= int(current_datetime[11:13]) <= 12:
+if int(current_datetime[11:13]) === 8:
 
     # Content for the email
     subject = 'Message From Mini Lindy Python - '
