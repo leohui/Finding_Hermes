@@ -13,7 +13,7 @@ day_of_week = today_date.isoweekday()
 current_datetime = dt.datetime.now().strftime("%Y-%m-%d %H:%M")
 
 #Send an email out to remind me of the program still running.
-if int(current_datetime[11:13]) == 8:
+if int(dt.datetime.now().strftime("%H")) == 8 and int(dt.datetime.now().strftime("%M")) > 30:
 
     # Content for the email
     subject = 'Message From Mini Lindy Python - '
