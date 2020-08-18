@@ -57,7 +57,8 @@ On Windows,
 
 
 On Linux,
-    1)Setup Cron Job, type crontab -e, use nano
+    1)Setup Cron Job, type crontab -e, 
+    1.1) use nano, if asked.
     2)Enter the following:
     
       # m h  dom mon dow   command
