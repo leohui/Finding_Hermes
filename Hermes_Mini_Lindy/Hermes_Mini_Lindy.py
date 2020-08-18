@@ -1,5 +1,6 @@
 ### Last Updated
 ### 4/11/2020 on Pi Zero - reduce number of emails in the morning.
+### 8/18/2020 on Yoga - Fixed errors caused by Hemes Website. Next fix is to loop thru code with two differnt URL for more accuracy.
 
 from bs4 import BeautifulSoup
 import requests
@@ -33,7 +34,8 @@ else:
 #url = 'https://www.hermes.com/us/en/search/?s=jige%20elan#||'
 
 ### Target to get results from this search URL
-url = 'https://www.hermes.com/us/en/search/?s=Mini%20Lindy#||'
+url = 'https://www.hermes.com/us/en/search/?s=Mini%20Lindy#||Category'
+url = 'https://www.hermes.com/us/en/search/?s=lindy+mini'
 
 ### Get the html from the URL and past it into BeautifulSoup with lxml parser
 source = requests.get(url).text
@@ -48,7 +50,7 @@ soup = BeautifulSoup(source,'lxml')
 
 try: #Not Found Item Page in Hermes - the page with items found will not have class_= 'sub-title ng-star-inserted'
     mini_lindy_please1 = soup.find('div', class_= 'main-title').text
-    mini_lindy_please2 = soup.find('div', class_= 'sub-title ng-star-inserted').text
+    mini_lindy_please2 = soup.find('div', class_= 'sub-title').text
     results = '\n' + mini_lindy_please1 + '\n' + mini_lindy_please2 + '\n'
     print('No Results . . .')
     print(results)
